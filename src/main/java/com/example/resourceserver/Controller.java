@@ -1,5 +1,6 @@
 package com.example.resourceserver;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,16 +15,19 @@ public class Controller {
 
     private String message = "Hello world!";
 
+    @PreAuthorize("hasRole('ROLE_RS_READ')")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Map<String, String> home() {
         return Collections.singletonMap("message", message);
     }
 
+    @PreAuthorize("hasRole('ROLE_RS_WRITE')")
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void updateMessage(@RequestBody String message) {
         this.message = message;
     }
 
+    @PreAuthorize("#oauth2.hasScope('resource-server-read')")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public Map<String, String> user(Principal user) {
 
