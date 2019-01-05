@@ -29,6 +29,8 @@ ext['springCloudVersion'] = 'Greenwich.RC1'
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
+	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.9.RELEASE'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
