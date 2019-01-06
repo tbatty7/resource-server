@@ -18,13 +18,12 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+ext['springCloudVersion'] = 'Greenwich.RC1'
 
 repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/milestone" }
 }
-
-ext['springCloudVersion'] = 'Greenwich.RC1'
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
