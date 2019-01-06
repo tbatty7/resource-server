@@ -21,13 +21,13 @@ public class Controller {
         return Collections.singletonMap("message", message);
     }
 
-    @PreAuthorize("#oauth2.hasScope('resource-server-read')")
+    @PreAuthorize("#oauth2.hasScope('resource-server-write')")
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void updateMessage(@RequestBody String message) {
         this.message = message;
     }
 
-    @PreAuthorize("#oauth2.hasScope('resource-server-read')")
+    @PreAuthorize("hasRole('ROLE_RS_READ')")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public Map<String, String> user(Principal user) {
 
